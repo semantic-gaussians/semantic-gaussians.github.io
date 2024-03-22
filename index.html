@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Semantic Gaussians">
+  <meta name="keywords" content="Semantic Gaussians">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    .center {
+      display: block;
+      margin: auto;
+    }
+  </style>
+
+  <style>
+    .video-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .video-container iframe {
+      max-width: 90%;
+      /* 调整iframe的宽度，以适应屏幕 */
+      box-sizing: border-box;
+    }
+  </style>
+  <title>Semantic Gaussians</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">Semantic Gaussians: Open-Vocabulary Scene Understanding with 3D
+              Gaussian Splatting</h1>
+            <!--h1 class="title is-4 publication-title">ECCV 2024</h1 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Jun Guo</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="https://jeasinema.github.io/">Xiaojian Ma</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="">Yue Fan</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://sites.google.com/site/thuliuhuaping">Huaping Liu</a><sup>2&#x1f4e7;</sup>,</span>
+              <span class="author-block">
+                <a href="https://liqing-ustc.github.io/">Qing Li</a><sup>1&#x1f4e7;</sup></span>
+            </div>
+
+
+
+            <div class="is-size-5 publication-authors">
+
+              <span class="author-block"><sup>1</sup>National Key Laboratory of General Artificial Intelligence,
+                Beijing Institute for General Artificial Intelligence (BIGAI)</span>
+              <span class="author-block"><sup>2</sup>Department of Computer Science and Technology, Tsinghua
+                University</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv (coming soon)</span>
+                  </a>
+                </span>
+                <!-- Tweet Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://x.com/jeasinema/status/1769938012631388477?s=20"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa-brands fa-x-twitter"></i>
+                    </span>
+                    <span>Thread on X</span>
+                  </a>
+                </span> -->
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+            <h2 class="subtitle has-text-justified">
+              <b>TL;DR:</b> We propose Semantic Gaussians, a versatile framework to conduct open-vocabulary scene
+              understanding on off-the-shelf 3D Gaussian Splatting scenes.
+            </h2>
+            <br>
+            <img width="80%" src="file/main/teaser.png">
+            <br>
+            <figcaption style="font-size: 18px;font-family: 'Times New Roman', Times, serif;">Figure 1. Overview of our
+              Semantic Gaussians. We inject semantic features into off-the-shelf 3D Gaussian Splatting by either
+              projecting semantic features from pre-trained 2D encoders or directly predicting pointwise embeddings by a
+              3D semantic network (or fusing these two). The newly added semantic components of 3D Gaussians open up
+              diverse applications centered around open-vocabulary scene understanding.</figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Open-vocabulary 3D scene understanding presents a significant challenge in computer vision, with
+              wide-ranging applications in embodied agents and augmented reality systems. Previous approaches have
+              adopted Neural Radiance Fields (NeRFs) to analyze 3D scenes. In this paper, we introduce Semantic
+              Gaussians, a novel open-vocabulary scene understanding approach based on 3D Gaussian Splatting. Our key
+              idea is distilling pre-trained 2D semantics into 3D Gaussians. We design a versatile projection approach
+              that maps various 2D
+              semantic features from pre-trained image encoders into a novel semantic component of 3D Gaussians, without
+              the additional training required by NeRFs. We further build a 3D semantic network that directly predicts
+              the semantic component from raw 3D Gaussians for fast inference. We explore several applications of
+              Semantic Gaussians: semantic segmentation on ScanNet-20, where our approach attains a 4.2% mIoU and 4.0%
+              mAcc improvement over prior open-vocabulary scene understanding counterparts; object part segmentation,
+              scene
+              editing, and spatial-temporal segmentation with better qualitative results over 2D and 3D baselines,
+              highlighting its versatility and effectiveness on supporting diverse downstream tasks.
+            </p>
+
+          </div>
+          <img width="95%" src="file/main/framework.png">
+          <br>
+          <figcaption style="font-size: 18px;font-family: 'Times New Roman', Times, serif;" align="left">Figure 2. An
+            illustration of the pipeline of Semantic Gaussians. Upper left: our projection framework maps various
+            pre-trained 2D features to the semantic component s<sup>2D</sup> of 3D Gaussians; Bottom left: we
+            additionally introduce a 3D semantic network that directly predicts the semantic components s<sup>3D</sup>
+            out of raw 3D Gaussians. It is supervised by the projected s<sup>2D</sup>; Right: given an open-vocabulary
+            text query, we compare its embedding against the semantic components (s<sup>2D</sup>, s<sup>3D</sup>, or
+            their fusion) of 3D Gaussians. The matched Gaussians will be splatted to render the 2D mask corresponding to
+            the query.</figcaption>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Semantic Segmentation Results</h2>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              Some results of semantic segmentation on the ScanNet-20 dataset.
+            </div>
+            <iframe width="900" height="600" src="file/main/seg_scannet20.mp4"></iframe>
+          </div>
+        </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Part Segmentation Results</h2>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              Some results of part segmentation on the MVImgNet dataset.
+            </div>
+            <iframe width="270" height="480" src="file/main/partseg_bottle.mp4"></iframe>
+            <iframe width="270" height="480" src="file/main/partseg_guitar.mp4"></iframe>
+            <iframe width="270" height="480" src="file/main/partseg_scissors.mp4"></iframe>
+          </div>
+        </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Spatiotemporal Tracking Results</h2>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              The demo of spatiotemporal tracking on human parts and a basketball on the CMU Panoptic dataset.
+            </div>
+            <iframe width="900" height="600" src="file/main/tracking_cmupanoptic.mp4"></iframe>
+          </div>
+        </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Language-Guided Editing Results</h2>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              Some language-guided editing result on the room scene of the Mip-NeRF 360 dataset.
+            </div>
+            <img width="80%" src="file/main/editing.png">
+          </div>
+        </div>
+  </section>
+
+</body>
+
+</html>
